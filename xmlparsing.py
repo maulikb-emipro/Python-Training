@@ -2,7 +2,7 @@ from xml.dom.minidom import parse
 from pydoc import ispath
 
 while 1:
-    path=input("Enter path for XML file :-")#"/home/emipro/workspace/odoo12/odoo/addons/account/views/account.xml"
+    path=input("Enter path for XML file :-")
     if ispath(path):
         file=parse(path)
         odoo=file.documentElement
