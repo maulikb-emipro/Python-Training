@@ -3,7 +3,7 @@ class manufacturing:
     quantity = 0
     row_material = ''
     
-    def __init__(self, name, quantity=quantity):
+    def __init__(self, name="Wood", quantity=quantity):
         """
         func :- Constructure for initializing Material name & quantity.
         param :- name - string.
@@ -32,7 +32,7 @@ class manufacturing:
         param :- No params needed.
         return :- message with total stock of raw material.
         """
-        print "There is", self.quantity, self.row_material, "left in Stock."
+        print("There is", self.quantity, self.row_material, "left in Stock.")
         
     def purchase(self, quantity):
         """

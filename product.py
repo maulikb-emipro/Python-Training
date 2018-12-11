@@ -3,7 +3,7 @@ class product:
     quantity = 0
     product_name = ''
     
-    def __init__(self, name, quantity=quantity):
+    def __init__(self, name="Wood", quantity=quantity):
         """
         func :- Constructure for initializing Product name & quantity.
         param :- name - string.
