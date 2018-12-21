@@ -64,39 +64,39 @@ class Product(Sell,Purchase):
         else:
             print("You can't purchase Service.")
         
-# product_obj=Product('Wood','consumable',50,18)
-# product_obj.purchase(10,"Maulikbhai", 25)
-# product_obj.sell(10, "Baradbhai", 20)
-# product_obj.purchase(10,"Maulikbhai", 15)
-# print(product_obj.product)
+product_obj=Product('Wood','consumable',50,18)
+product_obj.purchase(10,"Maulikbhai", 25)
+product_obj.sell(10, "Baradbhai", 20)
+product_obj.purchase(10,"Maulikbhai", 15)
+print(product_obj.product)
 
-product_name = input("Enter Product name :-")
-product_type=input("Enter Product Type :-")
-product_quantity = int(input("Enter Product quantity :-"))
-product_price=int(input("Enter Product price :-"))
-
-product_obj = Product(product_name,product_type, product_quantity,product_price)
-
-while 1:
-    print("Enter number from below options :- \n\t 1.Sell a Product \n\t 2.Purchase Product \n\t 3.Exit")
-    option = int(input("Enter option number :- "))
-    
-    if option == 1:
-        sell_quantity = int(input("Enter selling quantity of product:-"))
-        name=input("Enter Customer Name :-")
-        price=int(input("Enter product price :-"))
-        product_obj.sell(sell_quantity, name, price)
-        
-    elif option == 2:
-        puchase_quantity = int(input("Enter purchasing product quantity :-"))
-        name=input("Enter Vendor Name :-")
-        price=int(input("Enter product's purchasing price :-"))
-        product_obj.purchase(puchase_quantity,name,price)
-        
-    elif option == 3:
-        print(product_obj.product)
-        
-    elif option==4:
-        break
-    else:
-        print("Please, select valid option.")
+# product_name = input("Enter Product name :-")
+# product_type=input("Enter Product Type :-")
+# product_quantity = int(input("Enter Product quantity :-"))
+# product_price=int(input("Enter Product price :-"))
+# 
+# product_obj = Product(product_name,product_type, product_quantity,product_price)
+# 
+# while 1:
+#     print("Enter number from below options :- \n\t 1.Sell a Product \n\t 2.Purchase Product \n\t 3.Exit")
+#     option = int(input("Enter option number :- "))
+#     
+#     if option == 1:
+#         sell_quantity = int(input("Enter selling quantity of product:-"))
+#         name=input("Enter Customer Name :-")
+#         price=int(input("Enter product price :-"))
+#         product_obj.sell(sell_quantity, name, price)
+#         
+#     elif option == 2:
+#         puchase_quantity = int(input("Enter purchasing product quantity :-"))
+#         name=input("Enter Vendor Name :-")
+#         price=int(input("Enter product's purchasing price :-"))
+#         product_obj.purchase(puchase_quantity,name,price)
+#         
+#     elif option == 3:
+#         print(product_obj.product)
+#         
+#     elif option==4:
+#         break
+#     else:
+#         print("Please, select valid option.")

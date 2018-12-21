@@ -1,6 +1,6 @@
 from tax import Tax
 import re
-from _datetime import datetime
+import datetime
 
 class Purchase(Tax):
     "It collects data of purchasing Product"
@@ -27,12 +27,14 @@ class Purchase(Tax):
             number=int(number)+1
             key='PO/'+str(number).zfill(4)
             
-        tempDictionary['date']=str(datetime.now().date())
+        tempDictionary['date']=datetime.date.today().strftime("%d/%m/%Y")
         tempDictionary['name']=name
         tempDictionary['quantity']=quantity
+        tempDictionary['total_price']=tempDictionary['price']+tempDictionary['total_tax']
+        tempDictionary['unit_price']=tempDictionary['total_price']/quantity
         
         self.purchase_details[key]=tempDictionary
         
-        return tempDictionary['price']+tempDictionary['total_tax']
+        return tempDictionary['total_price']
         
         
