@@ -70,3 +70,5 @@ print(datetime2.utcnow())
 print(dt)
 new_time=timezone('Asia/Kolkata')
 print(pytz.utc.localize(dt).astimezone(new_time))
+
+print(pytz.all_timezones)
