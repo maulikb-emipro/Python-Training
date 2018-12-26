@@ -1,5 +1,6 @@
 class c_gst():
     "Calculates 18% Central GST"
+
     def get_tax(self, price):
         """
         func :- Calculates CGST.
@@ -9,8 +10,10 @@ class c_gst():
         cgst = price * 18 / 100
         return cgst
 
+
 class s_gst(c_gst, object):
     "Calculates 12% State GST"
+
     def get_tax(self, price):
         """
         func :- Calculates SGST.
@@ -22,9 +25,10 @@ class s_gst(c_gst, object):
         total = sgst + cgst
         return total
 
+
 class sales(s_gst):
     "Gives price with all taxes added"
-    
+
     def sale(self, price):
         """
         func :- Give details of saling product.
@@ -33,8 +37,8 @@ class sales(s_gst):
         """
         total_tax = self.get_tax(price)
         amount = price + total_tax
-        print "Final Amount is", amount
-        
+        print("Final Amount is", amount)
+
     def get_tax(self, price):
         """
         func :- Calculates Taxes.
@@ -43,6 +47,7 @@ class sales(s_gst):
         """
         total_tax = super(sales, self).get_tax(price)
         return total_tax
+
 
 sales_obj = sales()
 product_price = int(input("Enter price of Product :- "))

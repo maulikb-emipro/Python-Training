@@ -2,11 +2,12 @@ from sale import Sell
 from purchase import Purchase
 import math
 
-class Product(Sell,Purchase):
+
+class Product(Sell, Purchase):
     "Class Handles all operation on Product"
-    product={}
-    
-    def __init__(self,name,product_type,quantity,price):
+    product = {}
+
+    def __init__(self, name, product_type, quantity, price):
         """
         func :- Defines product name, type and quantity.
         params :- product Name -string
@@ -15,13 +16,15 @@ class Product(Sell,Purchase):
         params :- product price - integer
         returns :- nothing.
         """
-        total_value=price*quantity
-        self.product.update({'name':name,'type':product_type,'available_qty':quantity,'sell_order':[],'purchase_order':[],'profit_loss':0,'valuation_price':total_value,'purchase_value':total_value,'sell_value':0})
-        if self.product['type'].lower()=='service':
-            self.product['available_qty']=0
-            self.product['valuation_price']=0
-    
-    def sell(self,quantity,name,price):
+        total_value = price * quantity
+        self.product.update(
+            {'name': name, 'type': product_type, 'available_qty': quantity, 'sell_order': [], 'purchase_order': [],
+             'profit_loss': 0, 'valuation_price': total_value, 'purchase_value': total_value, 'sell_value': 0})
+        if self.product['type'].lower() == 'service':
+            self.product['available_qty'] = 0
+            self.product['valuation_price'] = 0
+
+    def sell(self, quantity, name, price):
         """
         func :- Function is called, when product is sold. It will call super method of Sell class and fetch sale order number.
         params :- product quantity - integer
@@ -29,23 +32,23 @@ class Product(Sell,Purchase):
         params :- selling price - integer 
         returns :- nothing
         """
-        if self.product['available_qty']>=quantity:
-            sell_value=super(Product, self).sell(self.product['type'],quantity,name,price)
-            self.product['sell_order']=list(self.sell_details.keys())
+        if self.product['available_qty'] >= quantity:
+            sell_value = super(Product, self).sell(self.product['type'], quantity, name, price)
+            self.product['sell_order'] = list(self.sell_details.keys())
             print(self.sell_details)
-            if not self.product['type'].lower()=='service':
-                valuation=self.product['valuation_price']*quantity/self.product['available_qty']
-                
-                self.product['profit_loss']=math.ceil(sell_value-valuation)
-                self.product['valuation_price']=math.ceil(self.product['valuation_price']-valuation)
-                self.product['available_qty']-=quantity
-                self.product['sell_value']+=sell_value
+            if not self.product['type'].lower() == 'service':
+                valuation = self.product['valuation_price'] * quantity / self.product['available_qty']
+
+                self.product['profit_loss'] = math.ceil(sell_value - valuation)
+                self.product['valuation_price'] = math.ceil(self.product['valuation_price'] - valuation)
+                self.product['available_qty'] -= quantity
+                self.product['sell_value'] += sell_value
             else:
-                self.product['profit_loss']=sell_value
+                self.product['profit_loss'] = sell_value
         else:
-            print("Only",self.product['available_qty'],self.product['name'],"Available.")
-        
-    def purchase(self,quantity,name,price):
+            print("Only", self.product['available_qty'], self.product['name'], "Available.")
+
+    def purchase(self, quantity, name, price):
         """
         func :- This function is called from product class when product is purchased.
         params :- product quantity - integer
@@ -53,21 +56,22 @@ class Product(Sell,Purchase):
         params :- purchasing price - integer 
         returns :- nothing
         """
-        if not self.product['type'].lower()=='service':
-            purchase_value=super(Product, self).purchase(quantity,name,price)
-            self.product['purchase_order']=list(self.purchase_details.keys())
+        if not self.product['type'].lower() == 'service':
+            purchase_value = super(Product, self).purchase(quantity, name, price)
+            self.product['purchase_order'] = list(self.purchase_details.keys())
             print(self.purchase_details)
-            self.product['purchase_value']+=purchase_value
-            self.product['valuation_price']+=purchase_value
-            self.product['available_qty']+=quantity
-            
+            self.product['purchase_value'] += purchase_value
+            self.product['valuation_price'] += purchase_value
+            self.product['available_qty'] += quantity
+
         else:
             print("You can't purchase Service.")
-        
-product_obj=Product('Wood','consumable',50,18)
-product_obj.purchase(10,"Maulikbhai", 25)
+
+
+product_obj = Product('Wood', 'consumable', 50, 18)
+product_obj.purchase(10, "Maulikbhai", 25)
 product_obj.sell(10, "Baradbhai", 20)
-product_obj.purchase(10,"Maulikbhai", 15)
+product_obj.purchase(10, "Maulikbhai", 15)
 print(product_obj.product)
 
 # product_name = input("Enter Product name :-")
