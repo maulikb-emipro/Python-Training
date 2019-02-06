@@ -109,4 +109,4 @@ print("Minutes :", date_now.strftime("%M"))
 print("Seconds :", date_now.strftime("%S"))
 print("Hours :", date_now.strftime("%c"))
 
-print(datetime.datetime.today()-date_now)
+print(datetime.datetime.today() - date_now)
